@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html lang="en">
-
+<body background="js/fondo.jpg"  background-size: 25px 50px;
+       background-size: cover>
 <title> Generar Configuraciones Fortinet </title>
 
 <head>
@@ -9,12 +11,34 @@
     <style type="text/css">
 
 
-    .bt2{padding:6px;border-radius:10px;}
-    .btb{background-color:#141C7B;color:white;width:120px;}
-
+    .bt2{padding-top:15px;padding-bottom:15px;padding-left:20;padding-right:20px;;border-radius:15px;
+	border-color: #d8d8d8;border-width: 3px;border-style: solid;}
+    .btb{background-color:#141C7B;color:white;width:222px;}	
+	.btb:hover{background-color:#f2595e;}
+	
     body {
       color: #68ED64;
       background-color: black }
+	  
+	table, td, th {
+        border:1px solid orange;
+      }
+      table {
+        border-collapse:collapse;
+        width:80%;
+      }
+      td, th {
+        padding:5px;
+      }
+      thead {
+        color:white;
+      }
+      tbody {
+        color:white;
+      }
+      tfoot {
+        color:maroon;
+      }
     </style>
 
     <script>
@@ -51,18 +75,206 @@
       <p id = "inicio"></p>
       <p id ="command_line"></p>
       <p id = "final"></p>
+	  
+
 <p>
     <input type="file" id="fileUploader" name="fileUploader" accept=".xls, .xlsx"/>
-    </br></br>
+    <br><br/>
     <label id="jsonObject"> </label>
-    </br></br>
-		<button class="bt2 btb" id="mybutton">Generar Usuarios Locales</button>
-    </br></br>
-    <button class="bt2 btb"  id="vipAddress">Generar VIP address</button>
-    </br></br>
-    <button class="bt2 btb"  id="todoYmas">Generar address ¡y mas!</button>
-    </br></br>
+    <br><br/>
+	
+	<button class="bt2 btb" id="mybutton">Generar Usuarios Locales</button>     
+    <button class="bt2 btb"  id="vipAddress">Generar VIP address</button>    
+    <button class="bt2 btb"  id="todoYmas">Generar address y mas!</button>
+	 <br><br/>
+	<button class="bt2 btb"  id="perfilWeb">Perfil Web (Solo Categorias monitor y Block)</button>
+	<button class="bt2 btb"  id="urlFilter">Filtro URL</button>
+	
+    <br><br/>
     <script src="js/scdsoo.js">    </script>
 </p>
 
+<div id="container">
+    <button type="button home-button" onclick="location.reload()" id="button1" >Intentalo de Nuevo</button> 
+</div>
+<HR>
+<pre><B>
+<HR>
+NOTAS:</B><br />
+
+1.Usuarios locales:	Se genera el usuario y el pass.
+2.VIP Address:		El nombre se genera automaticamente concatenando los datos de origen/destino/pto.
+			El puerto puede ser TCP o UDP.
+			
+<table>
+      <thead>
+        <tr>
+          <th>name</th>
+		  <th>externalIp</th>
+		  <th>internalIp</th>
+		  <th>portExt</th>
+		  <th>portIn</th>
+		  <th>tcpUdp</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>=MAYUSC(CONCATENAR("VIP_";B2;"_";C2;"_";F2;"_";D2))</td>
+          <td>191.192.193.194</td>
+          <td>192.168.1.10</td>
+		  <td>2001</td>
+		  <td>3389</td>
+		  <td>tcp</td>
+        </tr>
+         <tr>
+          <td>=MAYUSC(CONCATENAR("VIP_";B3;"_";C3;"_";F3;"_";D3))</td>
+          <td>201.202.203.204</td>
+          <td>10.10.10.5</td>
+		  <td>8081</td>
+		  <td>21</td>
+		  <td>udp</td>
+        </tr>   
+      </tbody>
+    </table>
+3.Address:		Tiene la siguiente estructura donde todos los datos son necesarios.
+		
+	<table>
+      <thead>
+        <tr>
+          <th>id1</th>
+		  <th>id2</th>
+		  <th>id3</th>
+		  <th>id4</th>
+		  <th>id5</th>
+		  <th>id6</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>edit</td>
+          <td>name-address</td>
+          <td>set type ipmask</td>
+		  <td>set subnet </td>
+		  <td>1.2.3.4/32</td>
+		  <td>next</td>
+        </tr>
+        <tr>
+          <td>edit</td>
+          <td>name-address-fqdn</td>
+          <td>set type fqdn</td>
+		  <td>set fqdn </td>
+		  <td>my.address.com</td>
+		  <td>next</td>
+        </tr>       
+      </tbody>
+    </table>
+	
+4. Perfil WEB:	Tiene la siguiente estructura donde todos los datos son necesarios. 
+		Solo son necesarios las subcategorias con accion bloquear y monitor.
+	
+<table>
+      <thead>
+        <tr>
+          <th>id1</th>
+		  <th>id2</th>
+		  <th>id3</th>
+		  <th>id4</th>
+		  <th>id5</th>
+		  <th>id6</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>edit 0</td>
+          <td>set category</td>
+          <td>26</td>
+		  <td>set action</td>
+		  <td>block</td>
+		  <td>next</td>
+        </tr>
+         <tr>
+          <td>edit 0</td>
+          <td>set category</td>
+          <td>49</td>
+		  <td>set action</td>
+		  <td>monitor</td>
+		  <td>next</td>
+        </tr>   
+      </tbody>
+    </table>
+
+
+5.  URL Filter:	Tiene la siguiente estructura donde todos los datos son necesarios. 
+
+<table>
+      <thead>
+        <tr>
+          <th>name</th>
+		  <th>type</th>
+		  <th>action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>*.url.com.co</td>
+          <td>wildcard</td>
+          <td>exempt</td>
+        </tr>
+         <tr>
+          <td>www.url.com.co</td>
+          <td>simple</td>
+          <td>allow</td>
+        </tr> 
+			<tr>
+          <td>*xxx*</td>
+          <td>regex</td>
+          <td>block</td>
+        </tr>				
+      </tbody>
+    </table>
+
+scripts
+### AGREGAR EL FILTRO URL A EL PERFIL WEB###
+
+	config webfilter profile
+		edit "NOMBRE PERFIL WEB"
+			config web
+				set urlfilter-table 1(ID DEL FILTRO)
+			end
+	end
+<HR>
+Scripts en excel, 
+
+<table>
+      <thead>
+        <tr>
+          <th>A</th>
+		  <th>B</th>
+		  <th>C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DATO 1</td>
+          <td>DATO 2</td>
+          <td>="Dato Fijo "&CARACTER(10)&"Dato Fijo y Concateno con "&A1&CARACTER(10)&"Dato Fijo y Concateno con "&B1&CARACTER(10)&"Dato fijo"</td>
+        </tr>
+         <tr>
+          <td>DATO 3</td>
+          <td>DATO 4</td>
+          <td>"Dato Fijo 
+Dato Fijo y Concateno con DATO 3
+Dato Fijo y Concateno con DATO 4
+Dato fijo"
+</td>
+        </tr>   
+      </tbody>
+    </table>
+
+<HR>
+<HR>
+</pre>
+
 </body>
+</html>
+
