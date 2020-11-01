@@ -1,0 +1,68 @@
+<html lang="en">
+
+<title> Generar Configuraciones Fortinet </title>
+
+<head>
+    <script src="js/jquery.js"> </script>
+    <script lang="javascript" src="js/xlsx.full.min.js"></script>
+
+    <style type="text/css">
+
+
+    .bt2{padding:6px;border-radius:10px;}
+    .btb{background-color:#141C7B;color:white;width:120px;}
+
+    body {
+      color: #68ED64;
+      background-color: black }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+              $("#fileUploader").change(function(evt){
+                    var selectedFile = evt.target.files[0];
+                    var reader = new FileReader();
+                    reader.onload = function(event) {
+                      var data = event.target.result;
+                      var workbook = XLSX.read(data, {
+                          type: 'binary'
+                      });
+                      workbook.SheetNames.forEach(function(sheetName) {
+
+                          var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                          var json_object = JSON.stringify(XL_row_object);
+                          document.getElementById("jsonObject").innerHTML = json_object;
+
+                        })
+                    };
+
+                    reader.onerror = function(event) {
+                      console.error("File could not be read! Code " + event.target.error.code);
+                    };
+
+                    reader.readAsBinaryString(selectedFile);
+              });
+        });
+    </script>
+
+</head>
+<input class="bt2 btb" type="button" value="==>Actualizar<==" onclick="location.reload()"/>
+<body>
+      <p id = "inicio"></p>
+      <p id ="command_line"></p>
+      <p id = "final"></p>
+<p>
+    <input type="file" id="fileUploader" name="fileUploader" accept=".xls, .xlsx"/>
+    </br></br>
+    <label id="jsonObject"> </label>
+    </br></br>
+		<button class="bt2 btb" id="mybutton">Generar Usuarios Locales</button>
+    </br></br>
+    <button class="bt2 btb"  id="vipAddress">Generar VIP address</button>
+    </br></br>
+    <button class="bt2 btb"  id="todoYmas">Generar address ¡y mas!</button>
+    </br></br>
+    <script src="js/scdsoo.js">    </script>
+</p>
+
+</body>
