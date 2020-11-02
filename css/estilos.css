@@ -1,0 +1,91 @@
+body1
+{
+    background: #1e1f24;
+    color: #333;
+    text-align: center;
+    font-family: Arial;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+#cabecera1
+{
+    background: #37488b;
+    box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.5);
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding: 0.5em;
+}
+
+#cabecera1 #logo1
+{
+    width: 20px;
+    vertical-align: middle;
+}
+
+#cabecera1 #tagline1
+{
+    padding: 0 0 0 1em;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+#container1
+{
+    width: 70%;
+    padding: 0;
+    text-align: left;
+    border: 1px solid #DDD;
+    margin: 0 auto;
+}
+
+#container1 h11
+{
+    font-size: 20px;
+}
+#post1
+{
+    background: white;
+    padding: 1em;
+}
+
+#footer
+{
+    background: #777;
+    color: white;
+    text-align: center;
+    padding: 0.5em;
+}
+.bt2{padding-top:15px;padding-bottom:15px;padding-left:20;padding-right:20px;;border-radius:15px;
+	border-color: #d8d8d8;border-width: 3px;border-style: solid;}
+    .btb{background-color:#141C7B;color:white;width:222px;}	
+	.btb:hover{background-color:#f2595e;}
+	
+    body {
+      color: #68ED64;
+      background-color: black }
+	  
+	table, td, th {
+        border:1px solid orange;
+      }
+      table {
+        border-collapse:collapse;
+        width:80%;
+      }
+      td, th {
+        padding:5px;
+      }
+      thead {
+        color:white;
+      }
+      tbody {
+        color:white;
+      }
+      #tfot {
+        background: #777;
+        color: white;
+        text-align: center;
+        padding: 0.5em;
+      }
