@@ -11,7 +11,7 @@ body1
 
 #cabecera1
 {
-    background: #37488b;
+    background: #e75116;
     box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.5);
     color: white;
     font-weight: bold;
@@ -53,7 +53,7 @@ body1
 
 #footer
 {
-    background: #777;
+    background: rgb(218, 11, 11);
     color: white;
     text-align: center;
     padding: 0.5em;
